@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Experiencias</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <a *ngFor="let item of experiences" [routerLink]="['/detail/' + item.id]">
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img [src]="item.image" />
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{ item.title }}</h2>
+          <h4>{{ item.place }}</h4>
+          <p>{{ item.score }} estrellas - {{ item.users }} usuarios</p>
+        </ion-label>
+      </ion-item>
+    </a>
+  </ion-list>
+</ion-content>

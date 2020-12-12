@@ -1,0 +1,6 @@
+<section class="score">
+  <div *ngFor="let space of spaces">
+    <ion-icon *ngIf="space <= score" name="star"></ion-icon>
+    <ion-icon *ngIf="space > score" name="star-outline"></ion-icon>
+  </div>
+</section>

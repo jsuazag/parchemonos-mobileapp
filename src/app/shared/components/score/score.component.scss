@@ -1,0 +1,9 @@
+@import './../../../../theme/variables.scss';
+
+.score {
+    display: flex;
+    ion-icon {
+        color: $primary;
+        font-size: 1.6em;
+    }
+}
