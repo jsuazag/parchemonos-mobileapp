@@ -14,11 +14,19 @@ export class HomePage implements OnInit {
   constructor(private experienceService: ExperiencesService) { }
 
   ngOnInit() {
-    this.loadExperienceData();
+    // this.loadExperienceDataLocal();
+    this.loadExperienceDataRemote();
   }
 
-  private loadExperienceData(): void {
+  private loadExperienceDataLocal(): void {
     this.experiences = this.experienceService.getAllLocal();
+  }
+
+  private loadExperienceDataRemote(): void {
+    this.experienceService.getAllRemote().subscribe(response => {
+      console.log('response', response);
+      this.experiences = response.list;
+    });
   }
 
 }

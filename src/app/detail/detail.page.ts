@@ -23,8 +23,10 @@ export class DetailPage implements OnInit {
 
   private getParams(): void {
     this.route.params.subscribe(params => {
-      const id = Number(params.id);
-      this.experience = this.experienceService.getFindByIdLocal(id);
+      const id = params.id;
+      this.experienceService.getFindByIdRemote(id).subscribe(response => {
+        this.experience = response.experience;
+      });
     });
   }
 

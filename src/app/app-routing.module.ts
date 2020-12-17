@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: '**',
     redirectTo: '/page-not-found'
+  },
+  {
+    path: 'booking',
+    loadChildren: () => import('./booking/booking.module').then( m => m.BookingPageModule)
   }
 ];
 

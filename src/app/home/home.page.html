@@ -9,7 +9,7 @@
 
 <ion-content>
   <ion-list>
-    <a *ngFor="let item of experiences" [routerLink]="['/detail/' + item.id]">
+    <a *ngFor="let item of experiences" [routerLink]="['/detail/' + item._id]">
       <ion-item>
         <ion-thumbnail slot="start">
           <img [src]="item.image" />

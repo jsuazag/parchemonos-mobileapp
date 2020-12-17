@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { IExperience } from '../shared/models/IExperience';
+import { HttpClient } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -81,7 +84,7 @@ export class ExperiencesService {
     }
   ];
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   public getAllLocal(): Array<IExperience> {
     return this.experiences;
@@ -89,6 +92,16 @@ export class ExperiencesService {
 
   public getFindByIdLocal(idToFind: number): IExperience {
     return this.experiences.find(el => el.id === idToFind)
+  }
+
+  public getAllRemote(): Observable<any> {
+    const url = `${environment.baseUrl}/experiences`;
+    return this.httpClient.get(url);
+  }
+
+  public getFindByIdRemote(idToFind: string): Observable<any>{
+    const url = `${environment.baseUrl}/experiences/detail/${idToFind}`;
+    return this.httpClient.get(url);
   }
 
 }
