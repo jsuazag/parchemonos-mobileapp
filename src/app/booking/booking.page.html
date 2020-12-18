@@ -8,11 +8,20 @@
 </ion-header>
 
 <ion-content>
-  <form>
-    <ion-input placeholder="Ingrese fecha de reserva"></ion-input>
+  <form [formGroup]="formGroup">
+    <ion-item>
+      <ion-label>Fecha de la reserva</ion-label>
+      <ion-datetime formControlName="date" 
+        [min]="minDateBooking" 
+        [max]="maxDateBooking" 
+        displayFormat="MMMM DD YYYY">
+      </ion-datetime>
+    </ion-item>
     <ion-item>
       <ion-label>Detalles de la reserva</ion-label>
-      <ion-textarea clearOnEdit="true"></ion-textarea>
+      <ion-textarea formControlName="detail" clearOnEdit="true"></ion-textarea>
     </ion-item>
+    <br /><br />
+    <ion-button (click)="makeBooking()" [disabled]="formGroup.invalid" color="secondary" expand="block">Confirmar reserva</ion-button>
   </form>
 </ion-content>
